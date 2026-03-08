@@ -18,14 +18,21 @@
 
     <meta name="theme-color" content="#020617">
 
-    <script src="https://cdn.tailwindcss.com" defer></script>
+    <style>
+      [v-cloak],
+      .cloak {
+        display: none !important;
+      }
+    </style>
+
+    <script id="tailwind-cdn" src="https://cdn.tailwindcss.com" defer></script>
   </head>
-  <body class="min-h-screen bg-slate-950 text-slate-50 antialiased">
+  <body class="min-h-screen bg-slate-950 text-slate-50 antialiased cloak">
     <header class="sticky top-0 z-40 border-b border-slate-800 bg-slate-950/80 backdrop-blur">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8 py-3 md:py-4">
         <a href="#hero" class="flex items-center gap-2">
-          <span class="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-emerald-500/10 ring-1 ring-emerald-400/40">
-            <svg viewBox="0 0 24 24" aria-hidden="true" class="h-4 w-4 text-emerald-400">
+          <span class="inline-flex items-center justify-center rounded-lg bg-emerald-500/10 ring-1 ring-emerald-400/40 logo-box" style="width: 32px; height: 32px;">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="text-emerald-400 logo-icon" style="width: 16px; height: 16px;">
               <path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4z" fill="currentColor"></path>
               <path d="M13 13h7v7h-7z" fill="currentColor" opacity="0.7"></path>
             </svg>
@@ -784,6 +791,16 @@
           "Ottimizzazione Core Web Vitals"
         ]
       }
+    </script>
+
+    <script>
+      (function () {
+        var tw = document.getElementById('tailwind-cdn');
+        if (!tw) return;
+        tw.addEventListener('load', function () {
+          document.body.classList.remove('cloak');
+        });
+      })();
     </script>
   </body>
 </html>
